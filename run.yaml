@@ -1,0 +1,6 @@
+- name: Playbook to configure roboshop project 
+  become: yes  
+  hosts: "{{ COMPONENT }}-prod"
+  serial: 1
+  roles: 
+    - "{{ COMPONENT }}"
