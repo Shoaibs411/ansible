@@ -1,0 +1,27 @@
+- name: Installing Maven
+  ansible.builtin.shell: curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/maven-java11/install.sh | bash  || true 
+
+- name: Creating User Account 
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create_user
+
+- name: Downloading Artifacts
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download_and_extract
+
+- name: Generating {{COMPONENT}} Artifacts
+  ansible.builtin.shell: mvn clean package &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+    chdir: /home/{{APPUSER}}/{{COMPONENT}}/
+
+- name: Configuring and Starting Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: config_svc
+
+- name: set-hostname 
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: set_hostname
