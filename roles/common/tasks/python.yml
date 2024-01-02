@@ -11,10 +11,16 @@
     name: common
     tasks_from: create_user
 
-- name: Downloading Artifacts
+## Uncomment this if we want to use the artifacts from GitHubx
+# - name: Downloading Artifacts
+#   ansible.builtin.include_role:
+#     name: common
+#     tasks_from: download_and_extract
+
+- name: Downloading Artifacts from Nexus
   ansible.builtin.include_role:
     name: common
-    tasks_from: download_and_extract
+    tasks_from: download_from_nexus
 
 - name: Updating the UID in {{COMPONENT}}.ini file 
   ansible.builtin.lineinfile:
