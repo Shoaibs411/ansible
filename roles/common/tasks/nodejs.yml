@@ -24,9 +24,9 @@
     tasks_from: download_from_nexus
 
 ## Uncomment this if we want to use the artifacts from GitHub
-- name: Generating {{COMPONENT}} Artifacts
-  community.general.npm:
-    path: /home/{{APPUSER}}/{{COMPONENT}}/
+# - name: Generating {{COMPONENT}} Artifacts
+#   community.general.npm:
+#     path: /home/{{APPUSER}}/{{COMPONENT}}/
 
 - name: Configuring and Starting Service
   ansible.builtin.include_role:
