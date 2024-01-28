@@ -7,9 +7,9 @@ filebeat.inputs:
   paths:
     - "{LOG_LOCATION}"
 
-  #fields:
-  #  level: debug
-  #  review: 1
+  fields:
+   component: "{{COMPONENT}}"
+   review: "{{LOGTYPE}}"
 
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
