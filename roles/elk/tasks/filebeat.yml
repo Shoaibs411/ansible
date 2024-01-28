@@ -1,3 +1,7 @@
 - name: Configuring the repo 
   ansible.builtin.shell: sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
 
+- name: Copying the Elasatic Repo 
+  ansible.builtin.template:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo 
