@@ -25,11 +25,6 @@
     src: roboshop.conf                
     dest: /etc/nginx/default.d/roboshop.conf           
 
-- name: Configuring RSYSLOG
-  ansible.builtin.include_role:
-    name: elk
-    tasks_from: rsyslog
-
 - name: Configuring Beats
   ansible.builtin.include_role:
     name: elk
