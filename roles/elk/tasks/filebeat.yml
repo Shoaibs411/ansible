@@ -15,3 +15,9 @@
   ansible.builtin.template:
     src: filebeat.yml 
     dest: /etc/filebeat/filebeat.yml
+
+- name: Restart filebeat 
+  ansible.builtin.service:
+    name: filebeat 
+    state: restarted       
+    daemon_reload: yes
