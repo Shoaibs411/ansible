@@ -18,16 +18,16 @@
     dest: /home/{{APPUSER}}/global-bundle.pem 
   become_user: "{{APPUSER}}"
 
-# Uncomment this if we want to use the artifacts from GitHub
-- name: Downloading Artifacts
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: download_and_extract
-
-# - name: Downloading Artifacts from Nexus
+# # Uncomment this if we want to use the artifacts from GitHub
+# - name: Downloading Artifacts
 #   ansible.builtin.include_role:
 #     name: common
-#     tasks_from: download_from_nexus
+#     tasks_from: download_and_extract
+
+- name: Downloading Artifacts from Nexus
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download_from_nexus
 
 ## Uncomment this if we want to use the artifacts from GitHub
 - name: Generating {{COMPONENT}} Artifacts
