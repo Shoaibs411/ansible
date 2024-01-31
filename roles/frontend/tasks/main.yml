@@ -30,15 +30,15 @@
     src: nginx.conf                
     dest: /etc/nginx/nginx.conf
 
-- name: Configuring RSYSLOG
-  ansible.builtin.include_role:
-    name: elk
-    tasks_from: rsyslog
-
 - name: Configuring Beats
   ansible.builtin.include_role:
     name: elk
     tasks_from: filebeat
+
+- name: Configuring RSYSLOG
+  ansible.builtin.include_role:
+    name: elk
+    tasks_from: rsyslog
 
 - name: Restarting Frontend Service
   ansible.builtin.systemd:
