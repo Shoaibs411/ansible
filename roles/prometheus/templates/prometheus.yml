@@ -16,9 +16,9 @@ scrape_configs:
   ec2_sd_configs: 
     - region: us-east-1
       port: 9100
-  #     filters:
-  #       - name: "tag:Monitor"
-  #         values: ["Yes" , "yes"]
+      filters:
+        - name: "tag:Monitor"
+          values: ["Yes" , "yes"]
   # relabel_configs:
   # - source_labels: [__meta_ec2_instance_id]
   #   target_label: instance_id
